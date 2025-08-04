@@ -1,4 +1,4 @@
-# Kanban Project \& Task Collaboration Tool 🧩
+# Kanban Project \& Task Management Tool 🧩
 
 A full-stack Kanban-style tool that allows users to manage projects, and organize tasks using drag-and-drop functionality.
 
