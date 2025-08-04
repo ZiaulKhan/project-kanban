@@ -8,11 +8,8 @@ A full-stack Kanban-style real-time collaboration tool that allows users to crea
 * 🧑‍🤝‍🧑 Team and Project management
 * 🗂️ Create, edit, delete tasks with `TODO`, `IN PROGRESS`, and `DONE` statuses
 * 🪄 Drag-and-drop task reordering (Kanban)
-* 🔎 Search and filter tasks by status or project
-* 📅 Calendar view with Event and Reminder support
 * 📊 Dashboard with project summaries
 * 🔐 Protected routes and user-specific data
-* 💬 Real-time UI using internal state (optional Socket.IO support in roadmap)
 
 ---
 
