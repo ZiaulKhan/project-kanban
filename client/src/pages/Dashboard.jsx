@@ -1,12 +1,6 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import {
-  FolderOpen,
-  Plus,
-  Calendar,
-  CheckCircle,
-  Clock,
-  Target,
-} from "lucide-react";
+import { FolderOpen, Calendar, CheckCircle, Clock, Target } from "lucide-react";
 
 import { useAuth } from "../context/AuthContext";
 import { useProjects } from "../context/ProjectContext";
@@ -16,8 +10,8 @@ import LoadingSpinner from "../components/shared/LoadingSpinner";
 
 const Dashboard = () => {
   const { user } = useAuth();
-  const { projects, loading: loadingProjects } = useProjects();
-  const { tasks, loading: loadingTasks } = useTasks();
+  const { projects, loading: loadingProjects, fetchProjects } = useProjects();
+  const { tasks, loading: loadingTasks, fetchTasks } = useTasks();
 
   const loading = loadingProjects || loadingTasks;
 
@@ -33,6 +27,13 @@ const Dashboard = () => {
       inProgressTasks,
     };
   };
+
+  useEffect(() => {
+    if (!user) return;
+    fetchProjects();
+    fetchTasks();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const renderStatCards = (stats) => {
     const statConfig = [

@@ -31,61 +31,67 @@ const KanbanColumn = ({
           </div>
 
           {/* Tasks */}
-          {tasks.map((task, index) => (
-            <Draggable key={task._id} draggableId={task._id} index={index}>
-              {(provided) => (
-                <div
-                  className="bg-white p-4 rounded-lg shadow-sm border border-gray-200 mb-3 cursor-move group"
-                  ref={provided.innerRef}
-                  {...provided.draggableProps}
-                  {...provided.dragHandleProps}
-                >
-                  <div className="flex justify-between mb-2">
-                    <h3 className="font-medium text-gray-900 text-sm">
-                      {task.title}
-                    </h3>
-                    <div className="flex space-x-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                      <button
-                        onClick={() => openModal(task)}
-                        className="p-1 text-gray-400 hover:text-primary-600"
+          {tasks.length > 0 ? (
+            tasks.map((task, index) => (
+              <Draggable key={task._id} draggableId={task._id} index={index}>
+                {(provided) => (
+                  <div
+                    className="bg-white p-4 rounded-lg shadow-sm border border-gray-200 mb-3 cursor-move group"
+                    ref={provided.innerRef}
+                    {...provided.draggableProps}
+                    {...provided.dragHandleProps}
+                  >
+                    <div className="flex justify-between mb-2">
+                      <h3 className="font-medium text-gray-900 text-sm">
+                        {task.title}
+                      </h3>
+                      <div className="flex space-x-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <button
+                          onClick={() => openModal(task)}
+                          className="p-1 text-gray-400 hover:text-primary-600"
+                        >
+                          <Edit3 className="h-4 w-4" />
+                        </button>
+                        <button
+                          onClick={() => setDeleteTaskId(task._id)}
+                          className="p-1 text-gray-400 hover:text-red-600"
+                        >
+                          <Trash2 className="h-4 w-4" />
+                        </button>
+                      </div>
+                    </div>
+                    {task.description && (
+                      <p className="text-gray-600 text-xs mb-3">
+                        {task.description}
+                      </p>
+                    )}
+                    <div className="flex justify-between items-center">
+                      <span
+                        className={`text-xs px-2 py-1 rounded-full font-medium ${getPriorityColor(
+                          task.priority
+                        )}`}
                       >
-                        <Edit3 className="h-4 w-4" />
-                      </button>
-                      <button
-                        onClick={() => setDeleteTaskId(task._id)}
-                        className="p-1 text-gray-400 hover:text-red-600"
-                      >
-                        <Trash2 className="h-4 w-4" />
-                      </button>
+                        <Flag className="h-3 w-3 inline mr-1" />
+                        {task.priority}
+                      </span>
+                      <span className="text-xs text-gray-500 flex items-center">
+                        <Calendar className="h-3 w-3 mr-1" />
+                        {new Date(task.createdAt).toLocaleDateString("en-US", {
+                          year: "numeric",
+                          month: "short",
+                          day: "numeric",
+                        })}
+                      </span>
                     </div>
                   </div>
-                  {task.description && (
-                    <p className="text-gray-600 text-xs mb-3">
-                      {task.description}
-                    </p>
-                  )}
-                  <div className="flex justify-between items-center">
-                    <span
-                      className={`text-xs px-2 py-1 rounded-full font-medium ${getPriorityColor(
-                        task.priority
-                      )}`}
-                    >
-                      <Flag className="h-3 w-3 inline mr-1" />
-                      {task.priority}
-                    </span>
-                    <span className="text-xs text-gray-500 flex items-center">
-                      <Calendar className="h-3 w-3 mr-1" />
-                      {new Date(task.createdAt).toLocaleDateString("en-US", {
-                        year: "numeric",
-                        month: "short",
-                        day: "numeric",
-                      })}
-                    </span>
-                  </div>
-                </div>
-              )}
-            </Draggable>
-          ))}
+                )}
+              </Draggable>
+            ))
+          ) : (
+            <h3 className="text-md text-gray-300/50 mb-2 text-center py-6">
+              No task yet
+            </h3>
+          )}
 
           {provided.placeholder}
         </div>

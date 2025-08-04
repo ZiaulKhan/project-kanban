@@ -2,7 +2,7 @@ const Task = require("../models/Task");
 
 exports.createTask = async (req, res) => {
   try {
-    const task = await Task.create(req.body);
+    const task = await Task.create({ ...req.body, user: req.userId });
     res.status(201).json(task);
   } catch (err) {
     res.status(400).json({ error: err.message });
@@ -47,7 +47,7 @@ exports.deleteTask = async (req, res) => {
 
 exports.getTasks = async (req, res) => {
   try {
-    const tasks = await Task.find({ isDeleted: false });
+    const tasks = await Task.find({ user: req.userId, isDeleted: false });
     if (!tasks) {
       return res.status(404).json({ error: "No tasks found" });
     }

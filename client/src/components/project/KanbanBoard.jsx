@@ -104,10 +104,10 @@ const KanbanBoard = () => {
     <div className="space-y-6">
       {/* Column Header */}
       <div className="flex items-center justify-between">
-        <div className="flex items-center space-x-4">
+        <div className="flex items-start space-x-4">
           <Link
             to="/projects"
-            className="p-2 text-gray-400 hover:text-gray-600"
+            className="mt-1 p-1 text-white rounded-full bg-gray-300 hover:bg-gray-400 transition-all duration-500"
           >
             <ArrowLeft className="h-5 w-5" />
           </Link>
