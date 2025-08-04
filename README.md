@@ -1,6 +1,6 @@
 # Kanban Project \& Task Collaboration Tool 🧩
 
-A full-stack Kanban-style real-time collaboration tool that allows users to create teams, manage projects, and organize tasks using drag-and-drop functionality.
+A full-stack Kanban-style tool that allows users to manage projects, and organize tasks using drag-and-drop functionality.
 
 ## 🚀 Features
 
@@ -17,12 +17,12 @@ A full-stack Kanban-style real-time collaboration tool that allows users to crea
 
 ### Frontend
 
-* **React** (w/ Vite)
-* **Redux Toolkit** for state management
+* **React**
+* **Context API** for state management
 * **React Router DOM** for routing
 * **React Hook Form + Zod** for form validation
 * **Tailwind CSS** for styling
-* **React Beautiful DnD** for Kanban drag and drop
+* **hello-pangea/dnd** for Kanban drag and drop
 * **Lucide React** for icons
 * **React Hot Toast** for notifications
 
@@ -32,7 +32,7 @@ A full-stack Kanban-style real-time collaboration tool that allows users to crea
 * **MongoDB + Mongoose**
 * **Zod** for request validation
 * **JWT** for user auth
-* **CORS**, **dotenv**, and **Morgan** for backend config and logging
+* **CORS**, **dotenv** for backend config
 
 ---
 
